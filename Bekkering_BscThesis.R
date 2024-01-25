@@ -13,7 +13,6 @@ if (!require("factoextra")) install.packages("factoextra")
 if (!require("randomForest")) install.packages("randomForest")
 if (!require("broom")) install.packages("broom")
 
-setwd("C:/Users/Sanne/DropBox/GSS Thesis/Data")
 set.seed(23)
 
 #**********************************************# 
@@ -22,8 +21,8 @@ set.seed(23)
 # RQ 1 - Plant leaf traits 
 data.plant <- read_excel("Thesis data.xlsx", sheet = "Plant")
 
-# RQ 2 - PCA's of management practices and soil characteristics 
-data.man <- read_excel("Thesis data.xlsx", sheet = "Management") # managament practices
+# RQ 2 - PCAs of management practices and soil characteristics 
+data.man <- read_excel("Thesis data.xlsx", sheet = "Management") # Managament practices
 data.soil <- read_excel("Thesis data.xlsx", sheet = "Soil") # Soil characteristics 
 
 # RQ 2 - Random forest management/soil variables per plant trait 
@@ -43,7 +42,7 @@ data.prod <- read_excel("Thesis data.xlsx", sheet = "Production")
 str(data.prod)
 
 
-#***************************************************# 
+#***********************************************************# 
 #### PART 3 - RQ 1 & 2-  PCA plant, management, and soil ####
 #***********************************************************# 
 # Ade4 method
@@ -117,9 +116,9 @@ pca.soil<-fviz_pca_biplot(caract.pca.soil, repel = TRUE,
         axis.text=element_text(size=12))
 pca.soil
 
-#*******************************************************# 
-####  PART 4 - RQ 2 - Random forest management  soil ####
-#*******************************************************# 
+#**********************************************************# 
+####  PART 4 - RQ 2 - Random forest management and soil ####
+#**********************************************************# 
 # LDMC 
 rf.LDMC <- randomForest((data.ldmc$LDMC) ~ ., proximity = T, importance = T, keep.forest = T, ntree = 1000, data = data.ldmc, flagReg = 0)
 rf.LDMC
